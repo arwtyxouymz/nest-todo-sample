@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -13,5 +13,6 @@ async function bootstrap() {
     }),
   );
   await app.listen(3000);
+  Logger.log(`Server running on http://localhost:3000`);
 }
 bootstrap();

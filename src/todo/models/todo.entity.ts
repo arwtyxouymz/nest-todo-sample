@@ -1,19 +1,31 @@
-export class Todo {
-  readonly id: number;
-  title: string;
-  description: string;
-  isDone: boolean;
-  until?: Date;
-  readonly createdAt?: Date;
-  readonly updatedAt?: Date;
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-  constructor(id: number, title: string, description: string, until?: Date) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.isDone = false;
-    this.until = until;
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
-  }
+@Entity()
+export class Todo {
+  @PrimaryGeneratedColumn()
+  readonly id: number;
+
+  @Column()
+  title: string;
+
+  @Column()
+  description: string;
+
+  @Column({ default: false })
+  isDone: boolean;
+
+  @Column({ nullable: true })
+  until?: Date;
+
+  @CreateDateColumn()
+  readonly createdAt?: Date;
+
+  @UpdateDateColumn()
+  readonly updatedAt?: Date;
 }

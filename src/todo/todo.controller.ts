@@ -28,7 +28,7 @@ export class TodoController {
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto) {
-    this.todoService.create(createTodoDto);
+    return this.todoService.create(createTodoDto);
   }
 
   @Put(':id')
@@ -36,11 +36,11 @@ export class TodoController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateTodoDto: UpdateTodoDto,
   ) {
-    this.todoService.update(id, updateTodoDto);
+    return this.todoService.update(id, updateTodoDto);
   }
 
   @Delete(':id')
   delete(@Param('id', ParseIntPipe) id: number) {
-    this.todoService.delete(id);
+    return this.todoService.delete(id);
   }
 }
