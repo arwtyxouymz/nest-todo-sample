@@ -17,22 +17,22 @@ export class TodoController {
   constructor(private todoService: TodoService) {}
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.todoService.findAll();
   }
 
   @Get(':id')
-  get(@Param('id', ParseIntPipe) id: number) {
+  async get(@Param('id', ParseIntPipe) id: number) {
     return this.todoService.get(id);
   }
 
   @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
+  async create(@Body() createTodoDto: CreateTodoDto) {
     return this.todoService.create(createTodoDto);
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateTodoDto: UpdateTodoDto,
   ) {
@@ -40,7 +40,7 @@ export class TodoController {
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe) id: number) {
+  async delete(@Param('id', ParseIntPipe) id: number) {
     return this.todoService.delete(id);
   }
 }
