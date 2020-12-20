@@ -4,7 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import { User } from '../user/entities/user.entity';
 
 @Entity()
 export class Todo {
@@ -28,4 +30,7 @@ export class Todo {
 
   @UpdateDateColumn()
   readonly updatedAt?: Date;
+
+  @ManyToOne((type) => User, (user) => user.todos)
+  user: User;
 }
